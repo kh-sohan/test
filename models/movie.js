@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const {Schema} = mongoose;
-const {ObjectID} = Schema;
+const {ObjectId} = Schema;
 
 const movieSchema = new Schema({
     name: {
@@ -13,8 +13,8 @@ const movieSchema = new Schema({
         maxlength: 4,
     },
     genre: {
-        type: ObjectID,
-        ref: 'Genre',
+        type: ObjectId,
+        ref: "Genre",
     },
     rating: {
         type: Number,

@@ -1,17 +1,17 @@
 const Genre = require("../models/genre");
 const Movie = require("../models/movie");
 
-// exports.getGenreById = (req, res, next, id) => {
-//     Genre.findById(id).exec((err, genre) => {
-//       if (err) {
-//         return res.status(400).json({
-//           error: "Genre not found in DB"
-//         });
-//       }
-//       req.genre = genre;
-//       next();
-//     });
-// };
+exports.getGenreById = (req, res, next, id) => {
+    Genre.findById(id).exec((err, genre) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Genre not found in DB"
+        });
+      }
+      req.genre = genre;
+      next();
+    });
+};
 
 // exports.getGenre = (req, res) => {
 //     return res.json(req.genre);
@@ -36,7 +36,7 @@ exports.getAllGenres = (req, res) => {
     .exec((err, genres) => {
       if (err) {
         return res.status(400).json({
-          error: "NO genres FOUND"
+          error: "No genres FOUND"
         });
       }
       res.json(genres);
