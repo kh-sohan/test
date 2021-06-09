@@ -2,7 +2,7 @@ const Movie = require("../models/movie");
 
 exports.getMovieById = (req, res, next, id) => {
     Movie.findById(id)
-    // .populate("genre")
+    .populate("genre")
     .exec((err, movie) => {
       if (err) {
         return res.status(400).json({
@@ -39,7 +39,7 @@ exports.getAllMovies = (req, res) => {
 exports.updateMovie = (req, res) => {       // to be used when updating movie genre
   const newgenre = req.genre;
   const movie = req.movie;
-  movie.Genre = newgenre;
+  movie.genre = newgenre;
 
   movie.save((err, updatedMovie) => {
     if (err) {

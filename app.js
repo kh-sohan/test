@@ -12,7 +12,7 @@ const movieRoutes = require("./routes/movie");
 
 //  DB Connection
 mongoose
-  .connect('mongodb://127.0.0.1:27017/moviesDB', {
+  .connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
@@ -26,7 +26,7 @@ app.use(express.json());
 // app.use(cors())
 
 //PORT
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 app.use('/api', movieRoutes);
 app.use('/api', genreRoutes);
