@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
 const genreSchema = new Schema({
-    name: {
+    Name: {
         type: String,
         required: true,
     },
-    imageURL: {
+    ImageURL: {
         type: String,
     }
 });

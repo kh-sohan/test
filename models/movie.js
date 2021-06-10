@@ -4,22 +4,22 @@ const {Schema} = mongoose;
 const {ObjectId} = Schema;
 
 const movieSchema = new Schema({
-    name: {
+    Name: {
         type: String,
         trim: true,
     },
-    release: {
+    Release: {
         type: Number,
         maxlength: 4,
     },
-    genre: {
+    Genre: {
         type: ObjectId,
         ref: "Genre",
     },
-    rating: {
+    Rating: {
         type: Number,
     },
-    imageURL: {
+    ImageURL: {
         type: String,
     }
 });
