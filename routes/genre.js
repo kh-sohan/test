@@ -4,10 +4,10 @@ const router = express.Router();
 const { getAllGenres, getGenreById } = require("../controllers/genre");
 const { getMoviesByGenre } = require("../controllers/movie");
 
-router.param("genreId", getGenreById);
+router.param("genreId", getGenreById); 
 
 
-router.get("/genres", getAllGenres);
-router.get("/genre/:genreId", getMoviesByGenre);            // to be used for No 3
+router.get("/genres", getAllGenres);                        // [works]
+router.get("/genre/:genreId", getMoviesByGenre);            // to be used for No 3 [works]
 
 module.exports = router;

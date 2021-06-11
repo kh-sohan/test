@@ -36,21 +36,24 @@ exports.getAllMovies = (req, res) => {
     });
 };
 
-exports.getMoviesByGenre = (req, res) => {
-  console.log(req.genre);
+exports.getMoviesByGenre = (req, res) => {      // got it to work ya
   Movie.find()
+  .populate("Genre")
   .exec((err, movies) => {
     if (err) {
       return res.status(400).json({
         error: "NO movies FOUND"
       });
     }
+    movies = movies.filter(function(movie) {
+      return movie.Genre.Name === req.genre.Name;
+    });
     res.json(movies);
   });
 };
 
 
-exports.updateMovie = (req, res) => {       // to be used when updating movie genre [works]
+exports.updateMovie = (req, res) => {       // to be used when updating movie genre [works]   // maybe change it to req.body
   const newgenre = req.genre;
   const movie = req.movie;
   console.log(newgenre.Name);
