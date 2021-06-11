@@ -45,9 +45,7 @@ exports.getMoviesByGenre = (req, res) => {      // got it to work ya
         error: "NO movies FOUND"
       });
     }
-    movies = movies.filter(function(movie) {
-      return movie.Genre.Name === req.genre.Name;
-    });
+    movies = movies.filter(movie => movie.Genre.Name === req.genre.Name);
     res.json(movies);
   });
 };
