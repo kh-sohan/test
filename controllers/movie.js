@@ -20,7 +20,6 @@ exports.getMovie = (req, res) => {
 };
 
 exports.getAllMovies = (req, res) => {
-  // let limit = req.query.limit ? parseInt(req.query.limit) : 8;
   let sortBy = req.query.sortBy ? req.query.sortBy : "Rating";
 
   Movie.find()
@@ -37,8 +36,10 @@ exports.getAllMovies = (req, res) => {
 };
 
 exports.getMoviesByGenre = (req, res) => {      // got it to work ya
+  let sortBy = req.query.sortBy ? req.query.sortBy : "Rating";
   Movie.find()
   .populate("Genre")
+  .sort([[sortBy, "desc"]])
   .exec((err, movies) => {
     if (err) {
       return res.status(400).json({
@@ -79,33 +80,3 @@ exports.updateMovieRating = (req, res) => {     // works
   });
 };
 
-// exports.updateMovie = (req, res) => {  
-//   Movie.findByIdAndUpdate(
-//     req.movie._id,
-//     req.body,
-//     {new: true},
-//     (err, movie) => {
-//       // Handle any possible database errors
-//           if (err) return res.status(500).send(err);
-//           return res.send(movie);
-//       }
-//   )
-// };
-
-
-
-// exports.updateMovieRating = (req, res) => {  
-//   console.log(req.movie);
-//   console.log(req.body);
-//   console.log(req.movie._id);
-//   Movie.findByIdAndUpdate(
-//     req.movie._id,
-//     req.body,
-//     {new: true},
-//     (err, movie) => {
-//       // Handle any possible database errors
-//           if (err) return res.status(500).send(err);
-//           return res.send(movie);
-//       }
-//   )
-// };

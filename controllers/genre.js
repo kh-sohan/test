@@ -1,5 +1,4 @@
 const Genre = require("../models/genre");
-const Movie = require("../models/movie");
 
 exports.getGenreById = (req, res, next, id) => {
     Genre.findById(id).exec((err, genre) => {
